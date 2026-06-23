@@ -1,0 +1,29 @@
+from collections import Counter
+import heapq
+class Solution:
+    def isNStraightHand(self, hand: List[int], groupSize: int) -> bool:
+        if len(hand) % groupSize > 0:
+            return False
+
+        count = Counter(hand)
+
+        minHeap = list(count.keys())
+        heapq.heapify(minHeap)
+
+
+        while minHeap:
+            start = minHeap[0]
+        
+            for i in range(start, start + groupSize):
+                if i not in count:
+                    return False
+                count[i] -= 1
+
+                print(i)
+                if count[i] == 0:
+                    if i != minHeap[0]:
+                        return False
+                
+                    heapq.heappop(minHeap)
+        
+        return True
