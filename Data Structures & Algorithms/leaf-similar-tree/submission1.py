@@ -16,14 +16,11 @@ class Solution:
             
             getSequence(curr.left, res)
             getSequence(curr.right, res)
-        
-        curr1 = root1
-        res1 = []
 
-        curr2 = root2
+        res1 = []
         res2 = []
 
-        getSequence(curr1, res1)
-        getSequence(curr2, res2)
+        getSequence(root1, res1)
+        getSequence(root2, res2)
 
         return res1 == res2
